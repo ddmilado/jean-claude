@@ -1,15 +1,59 @@
 import React, { useState } from 'react';
 import { Building2, Globe, Truck, Package, Phone, Mail, MapPin } from 'lucide-react';
 import logo from './assets/jclogo-removebg.png';
+import { databases, DATABASE_ID, CONTACT_COLLECTION_ID } from './config/appwrite';
+import { ID } from 'appwrite';
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       setIsMobileMenuOpen(false);
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      await databases.createDocument(
+        DATABASE_ID,
+        CONTACT_COLLECTION_ID,
+        ID.unique(),
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }
+      );
+      
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -193,31 +237,66 @@ function App() {
                 />
               </div>
             </div>
-            <form className="bg-white p-6 md:p-12 rounded-3xl shadow-2xl space-y-6 md:space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
                 <input
                   type="text"
-                  placeholder="Your Name"
-                  className="w-full px-4 md:px-6 py-3 md:py-4 bg-gray-50 rounded-xl border-0 focus:ring-2 focus:ring-blue-500 transition-all"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
               <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
                 <input
                   type="email"
-                  placeholder="Your Email"
-                  className="w-full px-4 md:px-6 py-3 md:py-4 bg-gray-50 rounded-xl border-0 focus:ring-2 focus:ring-blue-500 transition-all"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
               <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
                 <textarea
-                  placeholder="Message"
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  required
                   rows={4}
-                  className="w-full px-4 md:px-6 py-3 md:py-4 bg-gray-50 rounded-xl border-0 focus:ring-2 focus:ring-blue-500 transition-all"
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
                 ></textarea>
               </div>
-              <button className="w-full bg-black text-white px-6 md:px-8 py-3 md:py-4 rounded-xl hover:bg-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl">
-                Send Message
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`w-full px-4 py-2 text-white rounded-md transition-colors duration-300 ${
+                  isSubmitting 
+                    ? 'bg-gray-400 cursor-not-allowed'
+                    : 'bg-blue-600 hover:bg-blue-700'
+                }`}
+              >
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
+              
+              {submitStatus === 'success' && (
+                <div className="mt-2 text-green-600">
+                  Thank you for your message! We'll get back to you soon.
+                </div>
+              )}
+              
+              {submitStatus === 'error' && (
+                <div className="mt-2 text-red-600">
+                  Sorry, there was an error sending your message. Please try again.
+                </div>
+              )}
             </form>
           </div>
         </div>
@@ -260,7 +339,7 @@ function App() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-12 md:mt-16 pt-6 md:pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Jean-Claude General Trading Co. All rights reserved.</p>
+            <p>&copy; 2025 Jean-Claude General Trading Co. All rights reserved.</p>
           </div>
         </div>
       </footer>
