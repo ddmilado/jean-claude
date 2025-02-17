@@ -15,27 +15,33 @@ function App() {
           <div className="absolute inset-0 hero-gradient"></div>
         </div>
         
-        <nav className="relative z-10 flex items-center justify-between px-12 py-8">
+        <nav className="relative z-10 flex items-center justify-between px-4 md:px-12 py-6 md:py-8">
           <div className="flex items-center space-x-3">
-            <Building2 className="w-8 h-8 text-white" />
-            <span className="text-white text-2xl tracking-wide">Jean-Claude International</span>
+            <Building2 className="w-6 md:w-8 h-6 md:h-8 text-white" />
+            <span className="text-white text-lg md:text-2xl tracking-wide">Jean-Claude International</span>
           </div>
           <div className="hidden md:flex space-x-16 text-white text-sm tracking-widest uppercase">
             <a href="#services" className="hover:text-gray-300 transition-colors duration-300">Services</a>
             <a href="#about" className="hover:text-gray-300 transition-colors duration-300">About</a>
             <a href="#contact" className="hover:text-gray-300 transition-colors duration-300">Contact</a>
           </div>
+          {/* Mobile Menu Button */}
+          <button className="md:hidden text-white p-2">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </nav>
 
-        <div className="relative z-10 flex flex-col items-start justify-center h-full px-12">
+        <div className="relative z-10 flex flex-col items-start justify-center h-full px-4 md:px-12">
           <div className="max-w-4xl">
-            <h1 className="text-[120px] font-light text-white leading-none mb-8">
+            <h1 className="text-5xl md:text-[120px] font-light text-white leading-none mb-4 md:mb-8">
               Excellence in
             </h1>
-            <p className="text-xl text-gray-300 mb-12 max-w-xl leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-300 mb-8 md:mb-12 max-w-xl leading-relaxed">
               Global Trade & Logistics | Strategic Solutions | Transformative Partnerships
             </p>
-            <button className="text-white text-lg tracking-wide hover:bg-white hover:text-black transition-all duration-500 px-8 py-4 border border-white rounded-full">
+            <button className="w-full md:w-auto text-white text-lg tracking-wide hover:bg-white hover:text-black transition-all duration-500 px-6 md:px-8 py-4 border border-white rounded-full">
               Explore Services
             </button>
           </div>
@@ -43,15 +49,15 @@ function App() {
       </header>
 
       {/* Services Section */}
-      <section id="services" className="py-32 bg-gradient-to-b from-white to-gray-50">
-        <div className="max-w-7xl mx-auto px-12">
-          <div className="text-center max-w-2xl mx-auto mb-20">
-            <h2 className="text-5xl font-light mb-8">Core Competencies</h2>
-            <p className="text-gray-600 text-lg leading-relaxed">
+      <section id="services" className="py-16 md:py-32 bg-gradient-to-b from-white to-gray-50">
+        <div className="max-w-7xl mx-auto px-4 md:px-12">
+          <div className="text-center max-w-2xl mx-auto mb-12 md:mb-20">
+            <h2 className="text-4xl md:text-5xl font-light mb-6 md:mb-8">Core Competencies</h2>
+            <p className="text-base md:text-lg text-gray-600 leading-relaxed">
               At Jean-Claude International, versatility is our strength. We deliver precision-engineered solutions that consistently exceed client expectations.
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             <ServiceCard 
               icon={<Globe className="w-8 h-8" />}
               title="Import & Export Excellence"
@@ -72,22 +78,22 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-32 bg-neutral-100">
-        <div className="max-w-7xl mx-auto px-12">
-          <div className="grid grid-cols-2 gap-24">
-            <div>
+      <section id="about" className="py-16 md:py-32 bg-neutral-100">
+        <div className="max-w-7xl mx-auto px-4 md:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
+            <div className="order-2 md:order-1">
               <img 
                 src="https://images.unsplash.com/photo-1560264280-88b68371db39?auto=format&fit=crop&q=80"
                 alt="Trading operations"
-                className="w-full h-[600px] object-cover rounded-3xl shadow-2xl"
+                className="w-full h-[300px] md:h-[600px] object-cover rounded-3xl shadow-2xl"
               />
             </div>
-            <div>
-              <h2 className="text-5xl font-light mb-8">Our Legacy of Excellence</h2>
-              <p className="text-gray-600 text-lg leading-relaxed mb-12">
+            <div className="order-1 md:order-2">
+              <h2 className="text-4xl md:text-5xl font-light mb-6 md:mb-8">Our Legacy of Excellence</h2>
+              <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-8 md:mb-12">
                 Founded on the principles of innovation and excellence, Jean-Claude International has transformed into a dynamic force in global trade. Our trajectory is defined by groundbreaking achievements and strategic expansion across international markets.
               </p>
-              <div className="grid grid-cols-2 gap-8">
+              <div className="grid grid-cols-2 gap-6 md:gap-8">
                 <Stat value="1000+" label="Global Partners" />
                 <Stat value="50+" label="Markets Served" />
                 <Stat value="15+" label="Years of Trust" />
@@ -99,15 +105,15 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-32">
-        <div className="max-w-7xl mx-auto px-12">
-          <div className="grid grid-cols-2 gap-24">
+      <section id="contact" className="py-16 md:py-32">
+        <div className="max-w-7xl mx-auto px-4 md:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
             <div>
-              <h2 className="text-5xl font-light mb-8">Let's Connect</h2>
-              <p className="text-gray-600 text-lg leading-relaxed mb-12">
+              <h2 className="text-4xl md:text-5xl font-light mb-6 md:mb-8">Let's Connect</h2>
+              <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-8 md:mb-12">
                 Ready to explore how we can help your business thrive in the global market?
               </p>
-              <div className="space-y-8">
+              <div className="space-y-6 md:space-y-8">
                 <ContactInfo 
                   icon={<Phone className="w-5 h-5" />}
                   info="+971521699776"
@@ -122,29 +128,29 @@ function App() {
                 />
               </div>
             </div>
-            <form className="bg-white p-12 rounded-3xl shadow-2xl space-y-8">
+            <form className="bg-white p-6 md:p-12 rounded-3xl shadow-2xl space-y-6 md:space-y-8">
               <div>
                 <input
                   type="text"
                   placeholder="Your Name"
-                  className="w-full px-6 py-4 bg-gray-50 rounded-xl border-0 focus:ring-2 focus:ring-blue-500 transition-all"
+                  className="w-full px-4 md:px-6 py-3 md:py-4 bg-gray-50 rounded-xl border-0 focus:ring-2 focus:ring-blue-500 transition-all"
                 />
               </div>
               <div>
                 <input
                   type="email"
                   placeholder="Your Email"
-                  className="w-full px-6 py-4 bg-gray-50 rounded-xl border-0 focus:ring-2 focus:ring-blue-500 transition-all"
+                  className="w-full px-4 md:px-6 py-3 md:py-4 bg-gray-50 rounded-xl border-0 focus:ring-2 focus:ring-blue-500 transition-all"
                 />
               </div>
               <div>
                 <textarea
                   placeholder="Message"
                   rows={4}
-                  className="w-full px-6 py-4 bg-gray-50 rounded-xl border-0 focus:ring-2 focus:ring-blue-500 transition-all"
+                  className="w-full px-4 md:px-6 py-3 md:py-4 bg-gray-50 rounded-xl border-0 focus:ring-2 focus:ring-blue-500 transition-all"
                 ></textarea>
               </div>
-              <button className="w-full bg-black text-white px-8 py-4 rounded-xl hover:bg-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl">
+              <button className="w-full bg-black text-white px-6 md:px-8 py-3 md:py-4 rounded-xl hover:bg-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl">
                 Send Message
               </button>
             </form>
@@ -153,36 +159,36 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black text-white py-20">
-        <div className="max-w-7xl mx-auto px-12">
-          <div className="grid grid-cols-4 gap-24">
-            <div className="col-span-2">
-              <div className="flex items-center space-x-3 mb-8">
-                <Building2 className="w-6 h-6" />
-                <span className="text-xl tracking-wide">Jean-Claude International</span>
+      <footer className="bg-black text-white py-12 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 md:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-24">
+            <div className="col-span-1 md:col-span-2">
+              <div className="flex items-center space-x-3 mb-6 md:mb-8">
+                <Building2 className="w-5 md:w-6 h-5 md:h-6" />
+                <span className="text-lg md:text-xl tracking-wide">Jean-Claude International</span>
               </div>
               <p className="text-gray-400 leading-relaxed max-w-sm">
                 Transforming Global Trade Through Innovation - Your trusted partner in international commerce and logistics excellence.
               </p>
             </div>
-            <div>
-              <h3 className="text-sm uppercase tracking-widest mb-8">Navigation</h3>
-              <ul className="space-y-4 text-gray-400">
+            <div className="space-y-6 md:space-y-0">
+              <h3 className="text-sm uppercase tracking-widest mb-4 md:mb-8">Navigation</h3>
+              <ul className="space-y-3 md:space-y-4 text-gray-400">
                 <li><a href="#services" className="hover:text-white transition-colors">Services</a></li>
                 <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
                 <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
               </ul>
             </div>
-            <div>
-              <h3 className="text-sm uppercase tracking-widest mb-8">Contact</h3>
-              <ul className="space-y-4 text-gray-400">
+            <div className="space-y-6 md:space-y-0">
+              <h3 className="text-sm uppercase tracking-widest mb-4 md:mb-8">Contact</h3>
+              <ul className="space-y-3 md:space-y-4 text-gray-400">
                 <li>+971521699776</li>
                 <li>ngombimbassijeanclaude@gmail.com</li>
                 <li>Sabkha Area, Dubai, UAE</li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 mt-16 pt-8 text-center text-gray-400">
+          <div className="border-t border-gray-800 mt-12 md:mt-16 pt-6 md:pt-8 text-center text-gray-400">
             <p>&copy; 2024 Jean-Claude International. All rights reserved.</p>
           </div>
         </div>
