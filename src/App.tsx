@@ -8,8 +8,8 @@ function App() {
       <header className="relative h-screen">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80"
-            alt="Modern corporate interior"
+            src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80"
+            alt="Global logistics and shipping"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 hero-gradient"></div>
@@ -18,10 +18,10 @@ function App() {
         <nav className="relative z-10 flex items-center justify-between px-4 md:px-12 py-6 md:py-8">
           <div className="flex items-center space-x-3">
             <Building2 className="w-6 md:w-8 h-6 md:h-8 text-white" />
-            <span className="text-white text-lg md:text-2xl tracking-wide">Jean-Claude International</span>
+            <span className="text-white text-lg md:text-2xl tracking-wide">Jean-Claude General Trading Co.</span>
           </div>
           <div className="hidden md:flex space-x-16 text-white text-sm tracking-widest uppercase">
-            <a href="#services" className="hover:text-gray-300 transition-colors duration-300">Services</a>
+            <a href="#services" className="hover:text-gray-300 transition-colors duration-300">Our Services</a>
             <a href="#about" className="hover:text-gray-300 transition-colors duration-300">About</a>
             <a href="#contact" className="hover:text-gray-300 transition-colors duration-300">Contact</a>
           </div>
@@ -36,13 +36,13 @@ function App() {
         <div className="relative z-10 flex flex-col items-start justify-center h-full px-4 md:px-12">
           <div className="max-w-4xl">
             <h1 className="text-5xl md:text-[120px] font-light text-white leading-none mb-4 md:mb-8">
-              Excellence in
+              Global Logistics
             </h1>
             <p className="text-lg md:text-xl text-gray-300 mb-8 md:mb-12 max-w-xl leading-relaxed">
-              Global Trade & Logistics | Strategic Solutions | Transformative Partnerships
+              Premier Shipping Solutions | International Freight | Seamless Supply Chain
             </p>
             <button className="w-full md:w-auto text-white text-lg tracking-wide hover:bg-white hover:text-black transition-all duration-500 px-6 md:px-8 py-4 border border-white rounded-full">
-              Explore Services
+              Our Services
             </button>
           </div>
         </div>
@@ -52,26 +52,26 @@ function App() {
       <section id="services" className="py-16 md:py-32 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto px-4 md:px-12">
           <div className="text-center max-w-2xl mx-auto mb-12 md:mb-20">
-            <h2 className="text-4xl md:text-5xl font-light mb-6 md:mb-8">Core Competencies</h2>
+            <h2 className="text-4xl md:text-5xl font-light mb-6 md:mb-8">Logistics Excellence</h2>
             <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-              At Jean-Claude International, versatility is our strength. We deliver precision-engineered solutions that consistently exceed client expectations.
+              At Jean-Claude General Trading Co., we specialize in comprehensive logistics solutions that connect businesses across global markets. Our state-of-the-art shipping and freight services ensure your cargo reaches its destination safely and on time.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             <ServiceCard 
-              icon={<Globe className="w-8 h-8" />}
-              title="Import & Export Excellence"
-              description="Expert handling of high-value specialized cargo with advanced security protocols and real-time monitoring systems for automotive and general cargo."
-            />
-            <ServiceCard 
               icon={<Truck className="w-8 h-8" />}
-              title="Premium Freight Services"
-              description="Ultra-rapid air transit and strategic sea freight operations with cutting-edge tracking systems and comprehensive supply chain integration."
+              title="Global Freight Solutions"
+              description="Comprehensive air and sea freight services with real-time tracking, specialized handling, and express shipping options for time-critical deliveries."
             />
             <ServiceCard 
               icon={<Package className="w-8 h-8" />}
-              title="Strategic Real Estate"
-              description="Data-driven investment opportunities, comprehensive development management, and innovative property performance enhancement solutions."
+              title="Cargo Management"
+              description="Expert handling of general and specialized cargo, with advanced security protocols and efficient customs clearance services."
+            />
+            <ServiceCard 
+              icon={<Globe className="w-8 h-8" />}
+              title="Supply Chain Solutions"
+              description="End-to-end supply chain optimization, warehouse management, and distribution services tailored to your business needs."
             />
           </div>
         </div>
@@ -83,21 +83,21 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
             <div className="order-2 md:order-1">
               <img 
-                src="https://images.unsplash.com/photo-1560264280-88b68371db39?auto=format&fit=crop&q=80"
-                alt="Trading operations"
+                src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&q=80"
+                alt="Logistics operations"
                 className="w-full h-[300px] md:h-[600px] object-cover rounded-3xl shadow-2xl"
               />
             </div>
             <div className="order-1 md:order-2">
-              <h2 className="text-4xl md:text-5xl font-light mb-6 md:mb-8">Our Legacy of Excellence</h2>
+              <h2 className="text-4xl md:text-5xl font-light mb-6 md:mb-8">Global Reach & Expertise</h2>
               <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-8 md:mb-12">
-                Founded on the principles of innovation and excellence, Jean-Claude International has transformed into a dynamic force in global trade. Our trajectory is defined by groundbreaking achievements and strategic expansion across international markets.
+                With our strategic location in Dubai's Sabkha Area, we provide seamless logistics solutions across international markets. Our advanced tracking systems and experienced team ensure efficient handling of your shipments from origin to destination.
               </p>
               <div className="grid grid-cols-2 gap-6 md:gap-8">
-                <Stat value="1000+" label="Global Partners" />
-                <Stat value="50+" label="Markets Served" />
-                <Stat value="15+" label="Years of Trust" />
-                <Stat value="$500M+" label="Annual Volume" />
+                <Stat value="50+" label="Global Routes" />
+                <Stat value="24/7" label="Tracking Support" />
+                <Stat value="99.9%" label="Delivery Success" />
+                <Stat value="15K+" label="Monthly Shipments" />
               </div>
             </div>
           </div>
@@ -165,16 +165,16 @@ function App() {
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center space-x-3 mb-6 md:mb-8">
                 <Building2 className="w-5 md:w-6 h-5 md:h-6" />
-                <span className="text-lg md:text-xl tracking-wide">Jean-Claude International</span>
+                <span className="text-lg md:text-xl tracking-wide">Jean-Claude General Trading Co.</span>
               </div>
               <p className="text-gray-400 leading-relaxed max-w-sm">
-                Transforming Global Trade Through Innovation - Your trusted partner in international commerce and logistics excellence.
+                Your trusted partner in global logistics and shipping solutions. Connecting businesses worldwide with reliable and efficient freight services.
               </p>
             </div>
             <div className="space-y-6 md:space-y-0">
               <h3 className="text-sm uppercase tracking-widest mb-4 md:mb-8">Navigation</h3>
               <ul className="space-y-3 md:space-y-4 text-gray-400">
-                <li><a href="#services" className="hover:text-white transition-colors">Services</a></li>
+                <li><a href="#services" className="hover:text-white transition-colors">Our Services</a></li>
                 <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
                 <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
               </ul>
@@ -189,7 +189,7 @@ function App() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-12 md:mt-16 pt-6 md:pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Jean-Claude International. All rights reserved.</p>
+            <p>&copy; 2024 Jean-Claude General Trading Co. All rights reserved.</p>
           </div>
         </div>
       </footer>
