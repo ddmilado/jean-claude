@@ -26,7 +26,7 @@ function App() {
           <div className="absolute inset-0 hero-gradient"></div>
         </div>
         
-        <nav className="relative z-10 flex items-center justify-between px-4 md:px-12 py-6 md:py-8">
+        <nav className="relative z-50 flex items-center justify-between px-4 md:px-12 py-6 md:py-8">
           <div className="flex items-center space-x-2">
             <div className="relative w-16 md:w-20 h-16 md:h-20 flex items-center justify-center">
               <img 
@@ -59,30 +59,41 @@ function App() {
         </nav>
 
         {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="absolute z-20 top-20 left-0 right-0 bg-black bg-opacity-90 md:hidden">
-            <div className="flex flex-col items-center py-4 space-y-4">
+        <div 
+          className={`fixed inset-0 z-40 transform transition-transform duration-300 ease-in-out ${
+            isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+          } md:hidden`}
+        >
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-black bg-opacity-90"
+            onClick={() => setIsMobileMenuOpen(false)}
+          ></div>
+          
+          {/* Menu Content */}
+          <div className="absolute top-20 left-0 w-fit bg-black py-8 px-8 rounded-br-3xl">
+            <div className="flex flex-col items-start space-y-8">
               <button 
                 onClick={() => scrollToSection('services')} 
-                className="text-white text-sm tracking-widest uppercase hover:text-gray-300 transition-colors duration-300"
+                className="text-white text-xl tracking-wide whitespace-nowrap hover:text-gray-300 transition-colors duration-300"
               >
                 Our Services
               </button>
               <button 
                 onClick={() => scrollToSection('about')} 
-                className="text-white text-sm tracking-widest uppercase hover:text-gray-300 transition-colors duration-300"
+                className="text-white text-xl tracking-wide whitespace-nowrap hover:text-gray-300 transition-colors duration-300"
               >
                 About
               </button>
               <button 
                 onClick={() => scrollToSection('contact')} 
-                className="text-white text-sm tracking-widest uppercase hover:text-gray-300 transition-colors duration-300"
+                className="text-white text-xl tracking-wide whitespace-nowrap hover:text-gray-300 transition-colors duration-300"
               >
                 Contact
               </button>
             </div>
           </div>
-        )}
+        </div>
 
         <div className="relative z-10 flex flex-col items-start justify-center h-full px-4 md:px-12 -mt-20">
           <div className="max-w-4xl">
