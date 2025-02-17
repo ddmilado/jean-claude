@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Building2, Globe, Truck, Package, Phone, Mail, MapPin } from 'lucide-react';
+import logo from './assets/jclogo-removebg.png';
 
 function App() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsMobileMenuOpen(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -16,32 +27,75 @@ function App() {
         </div>
         
         <nav className="relative z-10 flex items-center justify-between px-4 md:px-12 py-6 md:py-8">
-          <div className="flex items-center space-x-3">
-            <Building2 className="w-6 md:w-8 h-6 md:h-8 text-white" />
+          <div className="flex items-center space-x-2">
+            <div className="relative w-16 md:w-20 h-16 md:h-20 flex items-center justify-center">
+              <img 
+                src={logo} 
+                alt="Jean-Claude General Trading Co. Logo" 
+                className="w-full h-full object-contain"
+              />
+            </div>
             <span className="text-white text-lg md:text-2xl tracking-wide">Jean-Claude General Trading Co.</span>
           </div>
           <div className="hidden md:flex space-x-16 text-white text-sm tracking-widest uppercase">
-            <a href="#services" className="hover:text-gray-300 transition-colors duration-300">Our Services</a>
-            <a href="#about" className="hover:text-gray-300 transition-colors duration-300">About</a>
-            <a href="#contact" className="hover:text-gray-300 transition-colors duration-300">Contact</a>
+            <button onClick={() => scrollToSection('services')} className="hover:text-gray-300 transition-colors duration-300">Our Services</button>
+            <button onClick={() => scrollToSection('about')} className="hover:text-gray-300 transition-colors duration-300">About</button>
+            <button onClick={() => scrollToSection('contact')} className="hover:text-gray-300 transition-colors duration-300">Contact</button>
           </div>
           {/* Mobile Menu Button */}
-          <button className="md:hidden text-white p-2">
+          <button 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden text-white p-2 focus:outline-none"
+          >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+              />
             </svg>
           </button>
         </nav>
 
-        <div className="relative z-10 flex flex-col items-start justify-center h-full px-4 md:px-12">
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="absolute z-20 top-20 left-0 right-0 bg-black bg-opacity-90 md:hidden">
+            <div className="flex flex-col items-center py-4 space-y-4">
+              <button 
+                onClick={() => scrollToSection('services')} 
+                className="text-white text-sm tracking-widest uppercase hover:text-gray-300 transition-colors duration-300"
+              >
+                Our Services
+              </button>
+              <button 
+                onClick={() => scrollToSection('about')} 
+                className="text-white text-sm tracking-widest uppercase hover:text-gray-300 transition-colors duration-300"
+              >
+                About
+              </button>
+              <button 
+                onClick={() => scrollToSection('contact')} 
+                className="text-white text-sm tracking-widest uppercase hover:text-gray-300 transition-colors duration-300"
+              >
+                Contact
+              </button>
+            </div>
+          </div>
+        )}
+
+        <div className="relative z-10 flex flex-col items-start justify-center h-full px-4 md:px-12 -mt-20">
           <div className="max-w-4xl">
-            <h1 className="text-5xl md:text-[120px] font-light text-white leading-none mb-4 md:mb-8">
+            <h1 className="text-5xl md:text-[120px] font-light text-white leading-none mb-4 md:mb-6">
               Global Logistics
             </h1>
-            <p className="text-lg md:text-xl text-gray-300 mb-8 md:mb-12 max-w-xl leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-300 mb-6 md:mb-8 max-w-xl leading-relaxed">
               Premier Shipping Solutions | International Freight | Seamless Supply Chain
             </p>
-            <button className="w-full md:w-auto text-white text-lg tracking-wide hover:bg-white hover:text-black transition-all duration-500 px-6 md:px-8 py-4 border border-white rounded-full">
+            <button 
+              onClick={() => scrollToSection('services')}
+              className="w-full md:w-auto text-white text-lg tracking-wide hover:bg-white hover:text-black transition-all duration-500 px-6 md:px-8 py-4 border border-white rounded-full mb-12"
+            >
               Our Services
             </button>
           </div>
@@ -163,8 +217,14 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-24">
             <div className="col-span-1 md:col-span-2">
-              <div className="flex items-center space-x-3 mb-6 md:mb-8">
-                <Building2 className="w-5 md:w-6 h-5 md:h-6" />
+              <div className="flex items-center space-x-2 mb-6 md:mb-8">
+                <div className="relative w-12 md:w-16 h-12 md:h-16 flex items-center justify-center">
+                  <img 
+                    src={logo} 
+                    alt="Jean-Claude General Trading Co. Logo" 
+                    className="w-full h-full object-contain"
+                  />
+                </div>
                 <span className="text-lg md:text-xl tracking-wide">Jean-Claude General Trading Co.</span>
               </div>
               <p className="text-gray-400 leading-relaxed max-w-sm">
