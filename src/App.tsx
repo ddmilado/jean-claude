@@ -225,7 +225,7 @@ function App() {
               <div className="space-y-6 md:space-y-8">
                 <ContactInfo 
                   icon={<Phone className="w-5 h-5" />}
-                  info="+971521699776"
+                  info="+971551984438"
                 />
                 <ContactInfo 
                   icon={<Mail className="w-5 h-5" />}
