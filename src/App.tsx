@@ -356,7 +356,7 @@ function App() {
             <div className="space-y-6 md:space-y-0">
               <h3 className="text-sm uppercase tracking-widest mb-4 md:mb-8">Contact</h3>
               <ul className="space-y-3 md:space-y-4 text-gray-400">
-                <li>+971521699776</li>
+                <li>+971551984438</li>
                 <li>ngombimbassijeanclaude@gmail.com</li>
                 <li>Sabkha Area, Dubai, UAE</li>
               </ul>
