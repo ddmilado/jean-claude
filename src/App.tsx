@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
-import { Building2, Globe, Truck, Package, Phone, Mail, MapPin } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Building2, Globe, Truck, Package, Phone, Mail, MapPin, Car } from 'lucide-react';
 import logo from './assets/jclogo-removebg.png';
 import { databases, DATABASE_ID, CONTACT_COLLECTION_ID } from './config/appwrite';
 import { ID } from 'appwrite';
+import ship2 from './assets/images/ship2.jpg';
+import ship3 from './assets/images/ship3.jpg';
+
+const backgroundImages = [
+  'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80',
+  ship2,
+  ship3
+];
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,6 +22,16 @@ function App() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        prevIndex === backgroundImages.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 6000); // Change image every 6 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -63,9 +82,9 @@ function App() {
       <header className="relative h-screen">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80"
+            src={backgroundImages[currentImageIndex]}
             alt="Global logistics and shipping"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-opacity duration-1000"
           />
           <div className="absolute inset-0 hero-gradient"></div>
         </div>
@@ -161,12 +180,17 @@ function App() {
       <section id="services" className="py-16 md:py-32 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto px-4 md:px-12">
           <div className="text-center max-w-2xl mx-auto mb-12 md:mb-20">
-            <h2 className="text-4xl md:text-5xl font-light mb-6 md:mb-8">Logistics Excellence</h2>
+            <h2 className="text-4xl md:text-5xl font-light mb-6 md:mb-8">Our Services</h2>
             <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-              At Jean-Claude General Trading Co., we specialize in comprehensive logistics solutions that connect businesses across global markets. Our state-of-the-art shipping and freight services ensure your cargo reaches its destination safely and on time.
+              Jean-Claude General Trading Co. is your comprehensive business partner, offering a diverse range of services from global logistics to automotive solutions. Our commitment to excellence drives every aspect of our operations.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            <ServiceCard 
+              icon={<Car className="w-8 h-8" />}
+              title="Car Sales & Rentals"
+              description="Premium automotive solutions including new and pre-owned vehicle sales, flexible rental options, and comprehensive vehicle maintenance services."
+            />
             <ServiceCard 
               icon={<Truck className="w-8 h-8" />}
               title="Global Freight Solutions"
@@ -180,7 +204,7 @@ function App() {
             <ServiceCard 
               icon={<Globe className="w-8 h-8" />}
               title="Supply Chain Solutions"
-              description="End-to-end supply chain optimization, warehouse management, and distribution services tailored to your business needs."
+              description="End-to-end supply chain management, optimizing your logistics operations with cutting-edge technology and industry expertise."
             />
           </div>
         </div>
